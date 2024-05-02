@@ -1,0 +1,61 @@
+.childContainer {
+  margin: auto;
+  width: 100%;
+  /* border-radius: 20px 20px 0px 0px; */
+  border-radius: 10px;
+  /* border-style: solid; */
+  /* border-color: rgb(214, 206, 206); */
+  -webkit-box-shadow: -9px 3px 18px -6px rgba(150, 138, 150, 1);
+  -moz-box-shadow: -9px 3px 18px -6px rgba(150, 138, 150, 1);
+  /* box-shadow: -9px 3px 18px -6px rgba(150,138,150,1); */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.firstlayerBox {
+  display: flex;
+  flex-direction: row;
+}
+.firstlayer {
+  border-bottom: 2px solid #eceaea;
+}
+.firstlayerContent {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 10px 25px 10px;
+  display: flex;
+}
+
+.underline {
+  /* border-style: solid; */
+  /* border-color:rgb(214, 206, 206); */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.spans {
+  font-weight: bold;
+  font-size: 16px;
+  font-size: 19px;
+  margin-top: 9px;
+  margin-left: 5px;
+}
+
+.secondlayer {
+  padding: 4px 20px 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 550px) {
+  .secondlayer {
+    padding: 4%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+    flex-grow: 1;
+  }
+}

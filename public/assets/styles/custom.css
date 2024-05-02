@@ -1,0 +1,11 @@
+.uploadInput {
+
+}
+
+.uploadBtn{
+  min-height: 36px;
+  background-color: rgb(0, 220, 255);
+  border: none;
+  padding: 1px 20px;
+  border-radius: 0px 8px 8px 0px;
+}

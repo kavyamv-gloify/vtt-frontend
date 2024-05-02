@@ -1,0 +1,238 @@
+.relative {
+    position: relative;
+}
+
+.route-file-download-icon {
+    font-size: 16px;
+    position: relative;
+    top: 1px;
+    right: 2px;
+}
+
+.route-file-download-btn {
+    position: absolute;
+    right: 10px;
+    /* top: 22px; */
+    color: black;
+    font-size: 12px;
+    border-radius: 13px
+}
+
+.route-accordion-header {
+    pointer-events: none;
+    border-right: 1.2px solid #e7e7e7;
+    padding: 10px;
+    border-left: 1.2px solid #e7e7e7;
+    background-color: white;
+    border-top: 3px solid #2080a2;
+    border-radius: 8px
+}
+
+.route-acc-head-cells-20 {
+    width: 20%;
+    font-weight: bold;
+    display: flex;
+}
+
+.route-acc-head-cells-15 {
+    width: 15%;
+    font-weight: bold;
+    display: flex;
+}
+
+.route-acc-body-cells-20 {
+    width: 20%;
+    padding-left: 16px
+}
+
+.route-acc-body-cells-15 {
+    width: 15%;
+    padding-left: 16px
+}
+
+.route-list-div {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+    margin-left: 20px
+}
+
+.route-list-data {
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 3px 6px 0px;
+    background: #ffff
+}
+
+.route-no-data {
+    font-size: 12px;
+    padding-left: 45%;
+    margin: 20% 0 20% 0
+}
+
+.route-master-upload-div {
+    min-height: 200px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 3px 6px 0px;
+    background-color: #FFF;
+    border-radius: 15px;
+    /* margin-top: 25px;
+    margin-bottom: 25px */
+    margin-top: 12px;
+    margin-bottom: 10px
+}
+
+.route-master-upload-div-inner {
+    display: flex;
+    border-right: solid 1px #eeeeee;
+    padding-left: 34px;
+    min-height: 200px;
+    margin-top: 8px
+}
+
+.route-master-input-file {
+    z-index: 22;
+    width: 250px;
+    height: 50px
+}
+
+.route-master-input-file-error {
+    color: red;
+    margin-left: -298px;
+    font-size: 12px
+}
+
+.route-master-graph-div {
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    background-color: none;
+    height: 29px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center
+}
+
+.route-master-graph-div-btn {
+    box-shadow: rgb(100 100 111 / 20%) 0px 3px 6px 0px;
+    position: relative;
+    margin-bottom: 13px;
+    bottom: 18px;
+    width: 125px;
+    border: solid 1px #E1DCDC;
+    color: black
+}
+
+.route-master-graph-inner-span {
+    display: inline-flex;
+    position: relative;
+    background: #e3f5ff;
+    margin-left: 6px;
+    width: 45px;
+    font-size: 12px;
+    padding-right: 5px;
+    border-radius: 5px
+}
+
+.route-master-graph-inner-span-2 {
+    background: red;
+    width: 24px;
+    padding: 4px 11px 4px 12px;
+    border-radius: 50%
+}
+
+.route-arrow-down-icon {
+    position: absolute;
+    bottom: -18px;
+    color: rgb(205, 205, 205);
+    font-size: 30px
+}
+
+.route-master-graph-bar-head {
+    background: red;
+    color: white;
+    font-weight: 400;
+    height: 29px;
+    width: 97%;
+    border-radius: 7px
+}
+
+.route-master-graph-bar-body-left {
+    position: relative;
+    padding-top: 6px;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    background: #2078b4;
+    height: 29px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center
+}
+
+.route-master-graph-bar-body-center {
+    position: relative;
+    padding-top: 6px;
+    background: #f1736f;
+    height: 29px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center
+}
+
+.route-master-graph-bar-body-right {
+    position: relative;
+    padding-top: 6px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    background: #fe7f0c;
+    height: 29px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center
+}
+
+.route-graph-bar-count {
+    position: absolute;
+    top: 4px
+}
+
+.route-graph-upper-img {
+    max-width: 16px;
+    position: absolute;
+    left: 4px;
+    margin-top: -2px
+}
+
+.route-upload-error-title {
+    background: #FF3333;
+    color: white;
+    padding-bottom: 0px;
+    font-weight: 600;
+    font-size: 16px
+}
+
+.route-upload-copy {
+    cursor: pointer;
+    margin-left: 12px;
+    font-size: 16px;
+    position: relative;
+    top: 4px
+}
+
+.route-upload-verified {
+    margin-left: 12px;
+    font-size: 16px;
+    position: relative;
+    top: 3px;
+    color: #60ea60
+}
+
+.route-dialog-content {
+    padding: 15px 10px 17px 21px;
+    background: #FF3333;
+    color: white
+}
+.route-graph-upper-container{
+    background: white;
+    height: 29px;
+    width: 97%;
+    border-radius: 7px
+}

@@ -1,0 +1,41 @@
+.ParentContainer{
+    display: flex;
+    border-top: 2px solid #eceaea;
+  
+}
+.content{
+    display:flex;
+    width:100%;
+    padding: 20px;
+}
+.para{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.paracontent{
+    width: 100%;
+}
+.iconsdiv{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    }
+    
+    .idicon {
+    display: flex;
+    align-items: center;
+   
+}
+
+.bookIcon{
+    margin-right: 8px;
+}
+.dateContent{
+    border-left: 2px solid grey;
+    display: flex;
+    margin-left: 10px;
+    padding-left: 10px;
+}

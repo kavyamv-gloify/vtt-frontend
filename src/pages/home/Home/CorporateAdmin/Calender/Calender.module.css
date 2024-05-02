@@ -1,0 +1,81 @@
+.underLine{
+    color:grey
+}
+.parentContainer{
+    display: flex;
+    /* flex-basis: 24%; */
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap:2%;
+    padding: 2%;
+    text-align: left;
+    border-top: 2px solid #eceaea;
+}
+
+.childcontainer{
+    height: 50px;
+    width:60px;
+    flex-basis: 15%;
+    margin-top: 9px;
+    border-radius: 10px;
+    align-items: center;
+    background: linear-gradient(
+        to top,
+        /* #AACAEF 0%, */
+        white 0%, 
+        white 50%,      
+        #add8e6 50%,
+        #add8e6 100%
+      );
+    -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.95);
+    -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+}
+
+.dateContainer{
+    margin: auto;
+    width: 50%;
+}
+.monthContainer{
+    display: flex;
+    width:72%;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.date{
+ padding-top: 4px;
+ font-size: 20px;
+ font-weight: bold;
+}
+
+.month{
+    padding-top: 4px;
+    font-size: 12px;
+    font-weight: thick bold;
+}
+
+.announceContent{
+    margin-top: 8px;
+    /* width:70%; */
+    flex-basis: 78%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    
+}
+
+.title{
+    font-weight: bold;
+    cursor: pointer;
+}
+.summary{
+    width: 90%;
+    text-align: justify;
+}
+.announcementSpace{
+    display: flex;
+    justify-content: space-between;
+}
+

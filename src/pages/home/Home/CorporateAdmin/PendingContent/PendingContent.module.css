@@ -1,0 +1,87 @@
+.underLine{
+    color:grey
+}
+.parentContainer{
+    display: flex;
+    /* flex-basis: 24%; */
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+    gap:8%;
+    padding: 2%;
+    text-align: left;
+    border-top: 2px solid #eceaea;
+}
+
+
+.PendingContent{
+    margin-top: 8px;
+    width:100%;
+    flex-basis: 80%;
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column;
+
+    
+}
+
+.iconcontent{
+    display: flex;
+    margin-bottom: 5px;
+    justify-content: space-between;
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+.contentTitle{
+    margin-left: 5px ;
+    margin-top: 2px;
+    font-weight: bold;
+}
+.content{
+    /* margin-left: 5px ; */
+    margin-top: 2px;
+}
+.id{
+    font-size: 13px;
+}
+.firstLayer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.secondlayer{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap:2%
+}
+.secondlayerName{
+    flex-basis: 30%;
+}
+.dateWrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    border-left: 2px solid #eceaea;
+    padding-left: 3px;
+    flex-basis: 66%;
+    /* width:50% */
+}
+.thirdlayer{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+.dateContent{
+    display: flex;
+    justify-content: space-between;
+
+}
+.time{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.timeValue{
+    margin-top: 4px;
+}

@@ -1,0 +1,24 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+@media (min-width: 991px){
+	.container-fluid{padding:0 60px;}
+}
+@media (max-width: 991px){
+	.bankingSec img, .dmtSec img, .aadharSec img, .miniAtmSec img, .biometricSec img, .payBizz img {width:100%;}
+	.container-fluid{padding:0 15px;}
+} */
+
+.filterContent{border:solid 1px #f1f0f0; padding: 15px;}
+.filterHeading{background-color: #f1f0f0; padding:16px 19px 2px 19px;}
+.filterHeading .img17{width:17px; cursor: pointer;}
+.filterHeading .img18{width:20mm; cursor: pointer; right: 50px; margin-top: -3px;}
+	.greyRow{background: #f3f4f6;}
+	.tableHead{background: #cfcfcf;}
+	/* h2{font-size:26px; font-weight:700; text-transform:uppercase; color:#0f3257;}
+	h3{font-size:22px; font-weight:700; color:#4e4e4e;}
+	h4{font-size:18px; font-weight:600; color:#091a50;} */
+	.contentSec{background: #fff; padding-bottom: 30px;}
+/* .contentSec .btn-primary{font-size: 14px; background:#1d5490; padding: 5px 15px; border-radius: 7px;} */
+.css-6tk6ie-MuiButtonBase-root-MuiButton-root { background:#1d5490 !important; }
+.btnPrimary{font-size: 14px; background:#1d5490; padding: 5px 15px; border-radius: 7px;}

@@ -1,0 +1,29 @@
+.ab {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgb(154, 152, 152);
+  border-radius: 11px;
+  margin-top: 30px;
+}
+.mainContainer{
+  display: flex;
+  justify-content: center;
+  width: 700px;
+  gap: 8rem;
+  margin: 2rem 0rem 1rem 0rem;
+}
+.mobileContainer{
+  margin-left: 5.1rem;
+  margin-bottom: 2rem;
+}
+.gridcontainer {
+  display: flex;
+  gap: 6px;
+}
+.gridtitle {
+  font-weight: bold;
+}
+
+.griditem {
+
+}
+

@@ -1,0 +1,90 @@
+.parentContainer{
+    /* height: 500px; */
+    width: 1000px;
+    flex-basis: 31%;
+    /* margin-top: 20px; */
+    margin: auto;
+    /* border-top: 53px solid grey; */
+    /* border-left: 8px solid #053f5c; */
+    border-radius: 20px;
+    /* background-color: lightcoral; */
+   /* z-index: 100; */
+    -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.95);
+    -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+
+}
+
+.heading{
+   margin-top: 4px;
+   background: #ebecf0;
+   border-radius: 20px 20px 0px 0px ;
+   margin: auto;
+   padding: 10px
+}
+
+
+.firstLayer{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    /* padding:3px */  
+}
+.title{
+    padding:6px;
+    /* width:10%; */
+    /* border-bottom: 4px solid orange;
+    border-radius: 3px; */
+
+}
+.TripContent{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+    flex-grow: 1;
+    margin-top: 10px;
+}
+
+.Tripgrid{
+    height: 60px;
+    width: 100px;
+    flex-basis: 22%;
+    margin-top: 20px;
+    padding: 18px;
+    /* border-left: 6px solid #053f5c; */
+    border-radius: 20px;
+    -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.95);
+    -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+}
+
+
+.ShiftContent{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+    flex-grow: 1;
+    padding-left: 20px;
+    margin-top: 30px;
+}
+
+.icons{
+    padding-right: 8px;
+}
+.ContentTitle{
+    color: grey;
+    padding-left: 10px;
+}
+.ContentIconWrapper{
+    display: flex;
+    flex-basis: 28%;
+    /* width:20%; */
+    flex-direction: row;
+    /* justify-content: space-between; */
+    padding-bottom: 20px;
+}
+.button{
+    width: 15%;
+    margin: auto;
+}

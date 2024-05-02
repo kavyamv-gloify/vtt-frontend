@@ -1,0 +1,247 @@
+.lt-vch-detail {
+  width: 300px;
+  /* height: 250px; */
+  left: -129px;
+  background-color: #fff;
+  border-radius: 10px;
+  color: black;
+  /* display: none; */
+  /* position: fixed; */
+  padding: 10px;
+}
+
+.live-tracking-marker-header {
+  border-bottom: 1px solid #ede6e6;
+  padding: 10px 10px 10px 18px;
+  margin: 0px -8px 10px -8px
+}
+
+.live-tracking-marker-header .span1 {
+  display: flex;
+  align-items: center;
+}
+
+.live-tracking-marker-driver-sec {
+  color: #999999;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px 0px;
+}
+
+.live-tracking-marker-driver-sec img {
+  border-radius: 50%;
+  height: 28px;
+  width: 28px;
+  margin-right: 10px;
+}
+
+.live-tracking-marker-lower-sec {
+  padding: 0;
+  margin-left: 10px;
+  margin-top: 6px;
+  color: #999999;
+  border: none;
+  display: flex;
+  align-items: end;
+}
+
+.live-tracking-marker-lower-sec img {
+  height: 22px;
+  width: 24px;
+  margin-right: 15px;
+}
+
+.live-tracking-header-btns {
+  display: flex;
+  width: 100%;
+  height: 60px;
+  justify-content: space-between;
+  z-index: 1;
+  background: #ffffff;
+  position: relative;
+  align-items: center;
+  /* margin: -30px; */
+}
+
+.live-tracking-side-bar {
+  background: transparent;
+  display: flex;
+  margin-top: 21px;
+  align-items: center;
+  justify-content: end;
+  z-index: 1;
+  position: relative;
+  margin: -3px 0px 0 0;
+}
+
+.live-tracking-side-bar .child {
+  width: 200px;
+  background: white;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.live-tracking-side-bar .child button {
+  width: 300px;
+  justify-content: initial;
+}
+
+.live-tracking-side-bar .side-icon {
+  background: orange;
+  padding: 5px 1px 1px 19px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.ldr-ldr {
+  display: none;
+}
+
+.ldr-ldr .header {
+  background: #f4f2f2;
+  margin: -10px;
+  border-top-left-radius: 10px;
+  padding: 10px 10px 10px 19px;
+  font-size: 18px;
+  border-top-right-radius: 10px;
+}
+
+.ldr-ldr .body {
+  margin-top: 20px;
+}
+
+.highlighted {
+  /* background: green; */
+  color: green;
+}
+
+.highlighted:hover {
+  /* background: #098fdc; */
+  color: green;
+}
+
+.blackFont {
+  color: black;
+}
+
+.live-tracking-side-pannel {
+  position: absolute;
+  z-index: 2;
+  padding: 10px;
+  background: white;
+  border-radius: 10px;
+  width: 350px;
+  right: 0px;
+  top: 10px;
+}
+
+.arr-btns {
+  margin-top: 4px;
+  background: white;
+  border-radius: 20px;
+  padding: 6px;
+  cursor: pointer;
+  font-size: 32px;
+}
+
+.section-bottom {
+  /* height: 100%; */
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+  margin-left: -30px;
+  margin-right: -30px;
+}
+
+.carousel-item-5 {
+  width: 15%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+  height: 100%;
+  background: #feffff;
+  border-left: 1px solid #f1f1f1;
+}
+
+.carousel-item-5:hover {
+  margin-top: -12px;
+  padding-top: 12px;
+  color: rgb(0, 86, 141);
+  border-bottom: 3px solid rgb(0, 86, 141);
+  height: 120%;
+}
+
+.highlighted-filter {
+  margin-top: -12px;
+  padding-top: 12px;
+  height: 120%;
+  color: rgb(0, 86, 141);
+  border-bottom: 3px solid rgb(0, 86, 141);
+}
+
+.carousel-item-5 .count {
+  position: absolute;
+  right: 0px;
+  top: 8px;
+  padding: 4px;
+  background: #f1f1f1;
+  color: #11234e;
+  font-weight: 600;
+  border-radius: 50%;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* .app-content{
+  padding: 0px !important;
+} */
+.carousel-item-5 .icon-span {
+  display: flex;
+  margin-bottom: 6px;
+}
+
+.carousel-item-5 .icon {
+  height: 20px;
+  width: auto;
+  margin-left: -6px;
+}
+
+.go-back-style {
+  z-index: 12;
+  position: absolute;
+  /* background: #ff9800; */
+  color: black;
+  /* width: 150px; */
+  top: -70px;
+  left: -64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  font-weight: 800;
+}
+
+.go-back-style .icon {
+  stroke: "#d6b17a";
+  stroke-width: 1px;
+  font-size: 30px;
+}
+
+.point-details {
+  display: flex;
+  max-width: 300px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #f0eded;
+  padding: 5px 10px 10px 10px;
+}
+
+.point-details .img-s {
+  width: 54px;
+  height: 50px;
+}

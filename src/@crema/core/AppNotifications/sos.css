@@ -1,0 +1,159 @@
+.sos-items {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.sos-right-section {
+    display: block;
+}
+
+.sos-header {
+    color: black;
+    font-weight: 800;
+}
+
+.sos-right-title-container {
+    position: absolute;
+    right: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    top: 5px;
+    background: #255389;
+    width: 41px;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sos-sub-header {
+    color: #438caa;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.sos-sub-header2 {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    padding: 10px 2px 18px 14px;
+}
+
+.sos-sub-header-icons {
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.sos-from-address {
+    /* padding: 10px 5px 15px 30px; */
+    color: #a4a3a3;
+}
+
+.sos-to-address {
+    /* padding: 10px 5px 15px 30px; */
+    color: #a4a3a3;
+}
+
+.sos-dotWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sos-grey-dotted-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* height: 39px; */
+    align-items: center;
+
+}
+
+.sos-green-dotted-icon {
+    font-size: 10px;
+    display: flex;
+    margin-bottom: 2px;
+}
+
+.sos-orange-dotted-icon {
+    font-size: 10px;
+    display: flex;
+}
+
+.sos-grey-icon {
+    color: grey;
+    font-size: 5px;
+    margin-bottom: 3px;
+}
+
+.sos-title-container {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.sos-title-container>.sos-title-image {
+    flex: 1 0 0%;
+    display: grid;
+    text-align: right;
+    /* and here*/
+}
+
+.sos-title-image>img {
+    vertical-align: top;
+    max-width: 100%;
+    max-height: 300px;
+    padding: 5px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid #dcdbdb;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
+
+.sos-title-container>.sos-title-text {
+    flex: 2 0 0%;
+    /* and eventually */
+
+    margin: auto 0;
+}
+
+.sos-bottom-container {
+    display: flex;
+    align-items: center;
+    padding: 18px 5px 7px 15px;
+}
+
+.sos-bottom-container-person {
+    display: flex;
+    /* padding-right: 12px; */
+    border-right: 1px solid #d8d8d8;
+    /* margin-right: 12px; */
+    /* align-items: center; */
+    width: 25%;
+    justify-content: center;
+}
+
+.sos-adhoc-button {
+    background: rgb(242, 158, 17);
+    padding: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    border-radius: 3px;
+}
+
+.sos-title-image-back {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 4px;
+    left: 8px;
+}
+
+.sos-title-image-up {
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    /* z-index: 2000; */
+    left: 17px;
+    border-radius: 50%;
+    top: 13px;
+}

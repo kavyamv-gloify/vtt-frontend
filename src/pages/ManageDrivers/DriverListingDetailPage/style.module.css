@@ -1,0 +1,42 @@
+.abs {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgb(154, 152, 152);
+  border-radius: 11px;
+  margin-top: 25px;
+}
+.gridcontainers3 {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: 'grey';
+  padding: 1px;
+}
+.gridcontainers2 {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  background-color: 'grey';
+  padding: 1px;
+}
+.gridcontainers {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  background-color: 'grey';
+  padding: 1px;
+}
+.gridtitle {
+  border: 0px;
+  padding: 15px;
+  font-size: 12px;
+  text-align: left;
+  font-weight: bold;
+}
+.griditem {
+  border: 0px;
+  padding: 15px;
+  font-size: 12px;
+  max-width: 200px;
+  text-align: left;
+}
+
+.bold {
+  font-weight: bold;
+}

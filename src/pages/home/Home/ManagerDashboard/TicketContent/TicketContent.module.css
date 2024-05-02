@@ -1,0 +1,87 @@
+.ParentContainer{
+    display: flex;
+    border-top: 2px solid #eceaea;
+  
+}
+.content{
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+    padding: 20px;
+}
+.para{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.paracontent{
+    width: 100%;
+}
+.iconsdiv{
+    display: flex;
+    justify-content: space-between;
+    width:50%;
+    margin-top: 3%;
+    flex-direction: row;
+
+}
+.idicon{
+    width: 38%;
+    display: flex;
+   
+    justify-content: space-between;
+}
+
+.bookIcon{
+    margin-top: -2px;
+}
+.dateContent{
+    border-left: 2px solid grey;
+    padding-left: 7%;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width:752){
+    .iconsdiv{
+        display: flex;
+        justify-content: space-between;
+        width: 65%;
+        margin-top: 3%;
+        flex-direction: row;
+    
+    }
+}
+@media screen and (max-width:747){
+    .iconsdiv{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 3%;
+        flex-direction: row;
+    
+    }
+}
+@media screen and (max-width:612){
+    .iconsdiv{
+        display: flex;
+        justify-content: space-between;
+        width: 70%;
+        margin-top: 3%;
+        flex-direction: row;
+    
+    }
+}
+
+@media screen and (max-width:540){
+    .iconsdiv{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 3%;
+        flex-direction: row;
+    
+    }
+}
