@@ -66,6 +66,8 @@ import {IncidentConfig} from './Incident-Management/index';
 import {YourRideConfigs} from './YourRide';
 import {DriversShiftConfigs} from '../pages/DriversShift/index';
 import {UserConfigs} from './EtravelMate User/index';
+import {VendorUserConfigs} from './Vendor-User-Management/index';
+
 import {DriverConsentConfigs} from './DriverConsent/index';
 import {DriverAttendenceConfigs} from './DriverAttendence/index';
 import {notificationsConfigs} from './Notifications/index';
@@ -141,6 +143,7 @@ const authorizedStructure = {
     ...IncidentConfig,
     ...YourRideConfigs,
     ...UserConfigs,
+    ...VendorUserConfigs,
     ...DriverAttendenceConfigs,
     ...FuelPriceConfig,
     ...AssociateConfig,

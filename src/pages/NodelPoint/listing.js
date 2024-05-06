@@ -112,6 +112,7 @@ const Topics = () => {
       pageNo: 1,
       pageSize: 1000,
     };
+    console.log("url_ - " + url_);
     axios
       .post(url_, !filter || _.isEmpty(filter) ? def_post : post_)
       .then((re_) => {

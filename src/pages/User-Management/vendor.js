@@ -1,76 +1,33 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import SmartTable from '@smart-table';
-import SmartForm from '@smart-form';
-import EditIcon from '@mui/icons-material/Edit';
-import {useNavigate} from 'react-router-dom';
-import axios from 'axios';
-import _, {assign, values} from 'lodash';
-import Api from '@api';
-import {useAuthUser} from '@crema/utility/AuthHooks';
-import Button from '@mui/material/Button';
 import {
-  Autocomplete,
-  Box,
   Dialog,
-  DialogContent,
   DialogTitle,
-  Grid,
+  DialogContent,
+  Autocomplete,
   TextField,
+  Grid,
+  Box,
 } from '@mui/material';
-import CustomLabel from 'pages/common/CustomLabel';
-import AppTooltip from '@crema/core/AppTooltip';
 import CloseIcon from '@mui/icons-material/Close';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import DeleteIcon from '@mui/icons-material/Delete';
-import {toast} from 'react-toastify';
+import SmartForm from '@smart-form';
+import EditIcon from '@mui/icons-material/Edit';
+import Button from '@mui/material/Button';
+import _, {assign, values} from 'lodash';
 import Confirm from '@confirmation-box';
-import RestoreIcon from '@mui/icons-material/Restore';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Vendor from './vendor';
+import AppTooltip from '@crema/core/AppTooltip';
 
-
-const RoleMaster = () => {
+const Vendor = () => {
+  // const [roleData, setRoleData] = useState([]);
   const [openDial, setopenDial] = useState(false);
-  const [success, setSuccess] = useState(true);
-  const [roleData, setRoleData] = useState([]);
-  const [savedObj, setsavedObj] = useState({});
-  const [delText, setDelText] = useState('');
+  const [openEdit, setopenEdit] = useState(false);
   const [delClicked, setdelClicked] = useState(false);
   const [openAssociate, setopenAssociate] = useState(false);
-  const [openEdit, setopenEdit] = useState(false);
-  const navigate = useNavigate();
-  const {user} = useAuthUser();
-  const [corporateList, setCorporateList] = React.useState([]);
   const [corpVal, setCorpVal] = React.useState([]);
-  const [value, setValue] = React.useState('Corporate');
-
-  React.useEffect(() => {
-    axios
-      .get(Api.baseUri + '/user-reg/corporate-reg?page=0&size=1000')
-      .then((response) => {
-        let array = [];
-        let array2 = [];
-        response?.data?.data?.body?.['CorporateList']?.map((el, ind) => {
-          array2.push(el.companyName);
-          array.push({
-            title:
-              el.companyName + (array2?.includes(el.companyName) ? ind : ''),
-            title2: el.companyName + ' - ' + el?.emailId + ', ' + el?.mobileNo,
-            value: el?.id,
-            imgsrc: Api?.imgUrl + el?.companyRegDoc,
-          });
-        });
-        setCorporateList(array);
-      })
-      .catch((err) => {
-        setCorporateList([]);
-      });
-  }, []);
-
-
+  const [delText, setDelText] = useState('');
 
   function CustomTabPanel(props) {
     const {children, value, index, ...other} = props;
@@ -91,128 +48,34 @@ const RoleMaster = () => {
       </div>
     );
   }
-  const handleChange = (newValue) => {
-    setValue(newValue);
-  };
 
   CustomTabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired,
   };
+  const tableTemplate = {
+    columns: [
+      {
+        title: 'Role Name',
+        field: 'roleName',
+      },
+      {
+        title: 'Description',
+        field: 'description',
+      },
+      {
+        title: 'Status',
+        field: 'status',
+      },
+      {
+        title: 'Created On',
+        field: 'createdOn',
+        type: 'datetime',
+      },
+    ],
+  };
 
-  function assignFunc() {
-    setSuccess(false);
-    let tem_corp = [];
-    corpVal?.map((el) => {
-      tem_corp.push(el.value);
-    });
-    axios
-      .put(Api.baseUri + '/user-reg/user-role/update-user-role', {
-        ...savedObj,
-        roleFor: 'EMPLOYEE',
-        corporateIds: tem_corp,
-      })
-      .then((res) => {
-        setSuccess(true);
-        if (res?.data?.status == '200') {
-          setsavedObj({});
-          setopenAssociate(false);
-          setDelText('');
-          getAllRoles();
-          toast.success('Role assigned successfully.');
-        } else {
-          toast.error(res?.data?.message || 'Something went wrong.');
-        }
-      })
-      .catch((err) => {
-        setSuccess(true);
-        toast.error('Something went wrong.');
-      });
-  }
-
-  useEffect(() => {
-    getAllRoles();
-  }, []);
-  function getAllRoles() {
-    axios
-      .get(Api.baseUri + '/user-reg/user-role/get-all-user-role')
-      .then((res) => {
-        setRoleData(res?.data?.data || []);
-      })
-      .catch((err) => {
-        setRoleData([]);
-      });
-  }
-  function onEdit(values) {
-    setSuccess(false);
-    if (values?.type == 'DELETE') {
-      axios
-        .put(Api.baseUri + '/user-reg/user-role/update-user-role', savedObj)
-        .then((res) => {
-          setSuccess(true);
-          if (res?.data?.status == '200') {
-            setsavedObj({});
-            setdelClicked(false);
-            setDelText('');
-            getAllRoles();
-            toast.success('Role ' + delText + 'd successfully.');
-          } else {
-            toast.error(res?.data?.message || 'Something went wrong.');
-          }
-        })
-        .catch((err) => {
-          setSuccess(true);
-          toast.error('Something went wrong.');
-        });
-      return;
-    }
-    axios
-      .put(Api.baseUri + '/user-reg/user-role/update-user-role', {
-        ...values?.data,
-        roleFor: 'EMPLOYEE',
-      })
-      .then((res) => {
-        setSuccess(true);
-        if (res?.data?.status == '200') {
-          setopenEdit(false);
-          setsavedObj({});
-          getAllRoles();
-          toast.success('Role updated successfully.');
-        } else {
-          toast.error(res?.data?.message || 'Something went wrong.');
-        }
-      })
-      .catch((err) => {
-        setSuccess(true);
-        toast.error('Something went wrong.');
-      });
-  }
-  function onSubmit(values) {
-    setSuccess(false);
-    axios
-      .post(Api.baseUri + '/user-reg/user-role/save-user-role', {
-        ...values?.data,
-        roleFor: 'EMPLOYEE',
-        corporateIds: [],
-        roleCode:
-          values?.data?.roleName?.toUpperCase() + '-' + roleData?.length,
-      })
-      .then((res) => {
-        setSuccess(true);
-        if (res?.data?.status == '200') {
-          toast.success('Role created successfully.');
-          setopenDial(false);
-          getAllRoles();
-        } else {
-          toast.error(res?.data?.message || 'Something went wrong.');
-        }
-      })
-      .catch((err) => {
-        setSuccess(true);
-        toast.error('Something went wrong.');
-      });
-  }
   let template = {
     layout: {
       column: 1,
@@ -249,131 +112,30 @@ const RoleMaster = () => {
     ],
   };
 
-  const tableTemplate = {
-    columns: [
-      {
-        title: 'Role Name',
-        field: 'roleName',
-      },
-      {
-        title: 'Description',
-        field: 'description',
-      },
-      {
-        title: 'Status',
-        field: 'status',
-      },
-      {
-        title: 'Created On',
-        field: 'createdOn',
-        type: 'datetime',
-      },
-    ],
-  };
-
-  function handleClick(rowData, type) {
-    if (type == 'ACTIVE' || type == 'INACTIVE') {
-      let temp = {
-        id: rowData?.id,
-        roleName: rowData?.roleName,
-        description: rowData?.description,
-        corporateIds: rowData?.corporateIds,
-        status: type,
-        createdOn: rowData?.createdOn,
-        createdBy: rowData?.createdBy,
-        roleCode: rowData?.roleCode,
-        roleFor: 'EMPLOYEE',
-      };
-      setDelText(type == 'ACTIVE' ? 'reactivate' : 'deactivate');
-      setsavedObj(temp);
-      setdelClicked(true);
-    }
-    if (type == 'ASSIGN') {
-      if (corporateList?.length) {
-        let temp = rowData?.corporateIds || [];
-        let t_val = [];
-        corporateList?.map((elements) => {
-          if (temp?.includes(elements?.value)) {
-            t_val.push(elements);
-          }
-        });
-        setCorpVal([...t_val]);
-      }
-      let temp = {
-        id: rowData?.id,
-        roleName: rowData?.roleName,
-        description: rowData?.description,
-        corporateIds: rowData?.corporateIds,
-        status: rowData?.status,
-        createdOn: rowData?.createdOn,
-        createdBy: rowData?.createdBy,
-        roleCode: rowData?.roleCode,
-        roleFor: 'EMPLOYEE',
-      };
-      setsavedObj(temp);
-      setopenAssociate(true);
-    }
-    if (type == 'EDIT') {
-      setopenEdit(true);
-      let temp = {
-        id: rowData?.id,
-        roleName: rowData?.roleName,
-        description: rowData?.description,
-        corporateIds: rowData?.corporateIds,
-        status: 'ACTIVE',
-        createdOn: rowData?.createdOn,
-        createdBy: rowData?.createdBy,
-        roleCode: rowData?.roleCode,
-        roleFor: 'EMPLOYEE',
-      };
-      setsavedObj(temp);
-    }
+  function onSubmit(values) {
+    console.log('values', values);
+  }
+  function onEdit(values) {
+    console.log('edit', values);
   }
 
   return (
-    <>
-      <Grid container spacing={2} sx={{mb: 6}} className='page-header-second'>
-        {/* <Grid item xs={9}>
-          <CustomLabel labelVal="Roles' List" variantVal='h3-underline' />
-        </Grid> */}
-        <Box sx={{width: '100%'}}>
-          <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
-            <Tabs value={value} aria-label='basic tabs example'>
-              <Tab
-                value={'Corporate'}
-                label='Corporate'
-                onClick={() => handleChange('Corporate')}
+    <div>
+      <Grid item style={{paddingTop: '1rem'}}>
+        <Box display='flex' justifyContent='flex-end'>
+          <div className='left-seperator'>
+            <AppTooltip placement={'top'} title={'Add Role'}>
+              <img
+                src='/assets/images/title-icon/add-driver.svg'
+                className='title-icons-mui'
+                onClick={(e) => {
+                  setopenDial(true);
+                }}
               />
-              <Tab
-                value={'Vendor'}
-                label='Vendor'
-                onClick={() => handleChange('Vendor')}
-              />
-            </Tabs>
-          </Box>
-          <CustomTabPanel value={value} index={'Corporate'}></CustomTabPanel>
-          <CustomTabPanel value={value} index={'Vendor'}>
-            <Vendor />
-          </CustomTabPanel>
-
-          <Grid item>
-            <Box display='flex' justifyContent='flex-end'>
-              <div className='left-seperator'>
-                <AppTooltip placement={'top'} title={'Add Role'}>
-                  <img
-                    src='/assets/images/title-icon/add-driver.svg'
-                    className='title-icons-mui'
-                    onClick={(e) => {
-                      setopenDial(true);
-                    }}
-                  />
-                </AppTooltip>
-              </div>
-            </Box>
-          </Grid>
+            </AppTooltip>
+          </div>
         </Box>
       </Grid>
-
       <SmartTable
         components={{
           Toolbar: (props) => (
@@ -388,7 +150,7 @@ const RoleMaster = () => {
         }}
         title='Bank Detail'
         columns={tableTemplate.columns}
-        data={roleData}
+        // data={roleData}
         options={{
           search: false,
           showTitle: false,
@@ -495,7 +257,7 @@ const RoleMaster = () => {
               template={template}
               onSubmit={onSubmit}
               buttons={['submit']}
-              success={success}
+              //   success={success}
             />
           </div>
         </DialogContent>
@@ -530,11 +292,11 @@ const RoleMaster = () => {
         <DialogContent style={{padding: '20px', paddingTop: '0px'}}>
           <div>
             <SmartForm
-              defaultValues={savedObj}
+              //   defaultValues={savedObj}
               template={template}
               onSubmit={onEdit}
               buttons={['update']}
-              success={success}
+              //   success={success}
             />
           </div>
         </DialogContent>
@@ -572,7 +334,7 @@ const RoleMaster = () => {
             <Autocomplete
               id='country-select-demo'
               sx={{width: '100%'}}
-              options={corporateList || []}
+              //   options={corporateList || []}
               value={corpVal || []}
               multiple
               limitTags={1}
@@ -630,8 +392,8 @@ const RoleMaster = () => {
           }
         }}
       />
-    </>
+    </div>
   );
 };
 
-export default RoleMaster;
+export default Vendor;

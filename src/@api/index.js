@@ -1,12 +1,19 @@
 // const baseUri = 'http://13.232.51.162:9000'
 // const baseUri= "http://k8s-vttprod-ingressp-0b87b88d60-1268368438.ap-south-1.elb.amazonaws.com/"  // 23 RD MAY 2023
+
+
 // const baseUri = 'https://api.etravelmate.com';
 
 
 
-const baseUri = 'https://uatapi.etravelmate.com';
+// const baseUri = 'https://uatapi.etravelmate.com';
 
-// const baseUri = 'https://4420-49-206-252-158.ngrok-free.app';
+const baseUri = "http://15.207.98.143:9000"
+
+// const baseUri = 'https://d1gttvcykaes1q.cloudfront.net';
+
+// const baseUri = 'https://qa-api.etravelmate.com';
+
 
 
 

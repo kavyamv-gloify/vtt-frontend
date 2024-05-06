@@ -65,6 +65,7 @@ const routesConfig = [
     type: 'item',
     url: '/taxes',
   },
+
   // {
   //   id: 'onBordTenet',
   //   title: 'Register Tenant',
@@ -76,6 +77,18 @@ const routesConfig = [
   //   url: '/superadmin/table',
   //   icon: <HiUserCircle />,
   // },
+
+  {
+    id: 'Users',
+    title: 'Users',
+    messageId: 'Users',
+    module: 'Taxes',
+    // iconUrl: 'Taxes',
+    permittedRole: RoutePermittedRole.ALL,
+    icon: <HiUserCircle />,
+    type: 'item',
+    url: '/vendor-user',
+  },
   {
     id: 'manageThemess',
     title: 'Manage Themes',

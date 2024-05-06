@@ -37,6 +37,8 @@ import {useParams} from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import EmpList from './empList';
+import VendorUserList from './vendorUserList';
+
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -308,6 +310,8 @@ export default function EnhancedTable() {
   const [myModule, setMyModule] = React.useState([]);
   const [selectedActions, setselectedActions] = React.useState({});
   const [tabVal, setTabVal] = React.useState(0);
+  const [roleType, setType] = React.useState();
+
   const {id} = useParams();
   // console.log('roleVal', roleVal);
   const tem_heads = [
@@ -517,6 +521,7 @@ export default function EnhancedTable() {
     'Compliance',
     'Reports',
     'IVR',
+    'VendorUser',
     'Invoicing',
     'Feedback',
     'Announcements',
@@ -726,6 +731,46 @@ export default function EnhancedTable() {
           >
             <Tab label='Permissions' value={0} />
             <Tab label='Assign Role' value={1} />
+
+            {tabVal === 1 && (
+              <div
+                style={{
+                  width: '40%',
+                  padding: '0 .5rem .5rem .5rem',
+                  marginLeft: 'auto',
+                }}
+              >
+                <Grid
+                  container
+                  spacing={2}
+                  className='sticky-container'
+                  style={{background: 'transparent'}}
+                  justifyContent='flex-end'
+                >
+                  <Grid item xs={6}>
+                    <Autocomplete
+                      id='tags-outlined'
+                      options={['Corporate', 'Vendor']}
+                      getOptionLabel={(option) => option}
+                      onChange={(e, v) => {
+                        setType(v);
+                        console.log('eeee', v);
+                      }}
+                      sx={{width: '100%'}}
+                      filterSelectedOptions
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          variant='outlined'
+                          label={'Select'}
+                          fullWidth
+                        />
+                      )}
+                    />
+                  </Grid>
+                </Grid>
+              </div>
+            )}
           </Tabs>
         </Box>
         {tabVal === 0 ? (
@@ -973,8 +1018,15 @@ export default function EnhancedTable() {
             })}
           </Paper>
         ) : (
+          roleType === 'Corporate' && (
+            <div style={{marginTop: '20px'}}>
+              <EmpList cid={id} role='EMPLOYEE' />
+            </div>
+          )
+        )}
+        {roleType === 'Vendor' && (
           <div style={{marginTop: '20px'}}>
-            <EmpList cid={id} role='EMPLOYEE' />
+            <VendorUserList />
           </div>
         )}
       </Box>
