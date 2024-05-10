@@ -204,6 +204,8 @@ const JWTAuthAuthProvider = ({children}) => {
     } else {
       requestData = {userId: uid, otp: otp};
       uri = Api.auth.verifyOTP;
+      localStorage.setItem('userID', uid);
+
     }
     try {
       ///${uid}/${otp}628e0395d3011b6b9fb0d294

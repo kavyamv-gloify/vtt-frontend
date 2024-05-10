@@ -843,6 +843,7 @@ const RouteLists = () => {
           DRI_ASS: mytemD7?.length,
           DRI_NASS: arr?.length - mytemD7?.length,
         });
+        
         setMyData([...arr]);
         setChildData([...arr]);
         setTripCodeList([...tripList]);

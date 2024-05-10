@@ -6,13 +6,17 @@
 
 
 
-// const baseUri = 'https://uatapi.etravelmate.com';
+const baseUri = 'https://uatapi.etravelmate.com';
 
-const baseUri = "http://15.207.98.143:9000"
+// const baseUri = 'http://qaapi.etravelmate.com';
+// 
+// const baseUri = 'http://etm-alb-1455955605.ap-south-1.elb.amazonaws.com/';
 
 // const baseUri = 'https://d1gttvcykaes1q.cloudfront.net';
 
-// const baseUri = 'https://qa-api.etravelmate.com';
+// const baseUri = 'https://qaapi.etravelmate.com';
+
+// const baseUri = 'https://mqfndl60-9000.inc1.devtunnels.ms';
 
 
 

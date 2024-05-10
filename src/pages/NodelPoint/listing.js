@@ -37,6 +37,8 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import SmartFilter from '@smart-filter';
 import _ from 'lodash';
+import EditNodalPoints from './Edit';
+
 
 const fieldList = [
   {title: 'Route Name', value: 'routeShortName'},
@@ -68,6 +70,7 @@ const Topics = () => {
   const [clickedParent, setClickedParent] = useState();
   const [myData, setMyData] = useState();
   const [openDialog, setopenDialog] = useState(false);
+  const [openEditDialog, setOpenEditDialog] = useState(false);
   const [dialID, setdialID] = useState();
   const [delId, setDelId] = useState('');
   const [filter, setFilter] = useState({});
@@ -79,6 +82,7 @@ const Topics = () => {
   const [openConfirmbox, setOpenConfirmBox] = useState(false);
   const [openConfirmboxReactivate, setOpenConfirmBoxReactivate] =
     useState(false);
+
   useEffect(() => {
     sortData(myData);
   }, [sortType]);
@@ -203,6 +207,16 @@ const Topics = () => {
       setopenDialog(false);
     }
   }
+  function popEditBTNClick(val) {
+    getFilterData();
+    if (!val) {
+      setOpenEditDialog(false);
+    }
+  }
+
+
+
+
 
   return (
     <div>
@@ -442,6 +456,23 @@ const Topics = () => {
                   eve.stopPropagation();
                 }}
               >
+                {myActions?.includes('Edit') && (
+                  <u
+                    style={{
+                      marginRight: '30px',
+                      opacity: el?.status == 'INACTIVE' ? '0.3' : ' ',
+                    }}
+                    onClick={() => {
+                      if (el?.status == 'INACTIVE') {
+                        return;
+                      }
+                      setDelId(el?._id);
+                      setOpenEditDialog(true);
+                    }}
+                  >
+                    Edit
+                  </u>
+                )}
                 {myActions?.includes('Deactivate') && (
                   <u
                     style={{opacity: el?.status == 'INACTIVE' ? '0.3' : ''}}
@@ -536,6 +567,7 @@ const Topics = () => {
                   style={{cursor: 'pointer'}}
                   onClick={() => {
                     setopenDialog(false);
+                    setOpenEditDialog(false);
                     setdialID('');
                   }}
                 />
@@ -543,7 +575,7 @@ const Topics = () => {
             </div>
           </DialogTitle>
           <DialogContent>
-            <CreateForm id='create' popBTNClick={popBTNClick} />
+            <CreateForm id='create' popBTNClick={popEditBTNClick} />
           </DialogContent>
         </Dialog>
       ) : null}
@@ -561,6 +593,15 @@ const Topics = () => {
         handleClose={closeConfirmBoxReactivate}
         reason={true}
       />
+
+      {openEditDialog && delId && (
+        <EditNodalPoints
+          openEditDialog={openEditDialog}
+          id={delId}
+          popBTNClick={popBTNClick}
+          setOpenEditDialog={setOpenEditDialog}
+        />
+      )}
 
       {filterShow && (
         <SmartFilter

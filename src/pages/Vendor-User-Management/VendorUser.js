@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Grid, Box} from '@mui/material';
 import CustomLabel from 'pages/common/CustomLabel';
 import AppTooltip from '@crema/core/AppTooltip';
@@ -12,18 +12,64 @@ import SmartTable from '@smart-table';
 import RestoreIcon from '@mui/icons-material/Restore';
 import Api from '@api';
 import axios from 'axios';
+import {Delete, FastForward} from '@mui/icons-material';
+import PopEdit from '@editpopup';
+import {toast} from 'react-toastify';
+import Confirm from '@confirmation-box';
+
+
 
 const VendorUser = () => {
   const [openform, setOpenForm] = useState(false);
+  const [userData, setUserData] = useState([]);
+  const [openDialog, setopenDialog] = useState(false);
+  const [editData, setEditData] = useState([])
+  const [showbtn, setshowbtn] = useState(true);
+  const [deleteData, setDeleteData] = useState([])
+  const [restoreData, setRestoreData] = useState([])
+  const [openConfirmbox, setOpenConfirmBox] = useState(false);
+  const [openConfirmboxReactivate, setOpenConfirmBoxReactivate] = useState(false);
+  
 
-  const handleSubmit = async (val) => {
-    let postData = val?.data;
+  const vendorID = localStorage.getItem('userID')
+
+
+  const getAllUser = () => {
     axios
-      .post(Api.baseUri + 'userauth/user-account/createUserDetails', postData)
-      .then((res) => {
-        console.log('res', res);
+      .get(Api.baseUri + `/userauth/user-account/get-All-Users/${vendorID}`)
+      .then((response) => {
+        setUserData(response.data.data);
       })
       .catch((err) => console.log(err));
+  }
+  useEffect(() => {
+    getAllUser();
+
+  }, [])
+
+  const handleSubmit = async (val) => {
+    setshowbtn(false);
+    let postData = val?.data;
+    postData.vendorId = vendorID;
+    axios
+      .post(Api.baseUri + '/userauth/user-account', postData)
+      .then((res) => {
+       if (res?.status === 200) {
+         toast.success('User submitted successfully');
+         setOpenForm(false);
+         getAllUser();
+         setshowbtn(true);
+       } else if (res?.status === 500) {
+         toast.error(res?.data?.message);
+       } else {
+         toast.error('Something went wrong');
+         setshowbtn(true);
+       }
+      })
+      .catch((err) => {
+        toast.error('Somethig went wrong');
+        setshowbtn(true);
+      });
   };
 
   const tableTemplate = {
@@ -76,8 +122,7 @@ const VendorUser = () => {
       label: 'fixed',
       type: 'grid',
     },
-    // title: 'Bank Type',
-    description: 'Form for applying Job',
+    description: 'Form for creating user',
     sections: [
       {
         layout: {column: 2, spacing: 1, size: 'small', label: 'fixed'},
@@ -119,7 +164,7 @@ const VendorUser = () => {
             title: 'Email Id',
             pattern: {
               value: regex.emailReg,
-              message: 'Please enter  valid amount',
+              message: 'Please enter valid email',
             },
             validationProps: {
               required: 'This is a mandatory field',
@@ -129,6 +174,146 @@ const VendorUser = () => {
       },
     ],
   };
+
+
+  let EditTemplate = {
+    layout: {
+      column: 2,
+      spacing: 2,
+      size: 'medium',
+      label: 'fixed',
+      type: 'grid',
+    },
+    title: 'User',
+    description: 'Form for applying Job',
+
+    fields: [
+      {
+        type: 'text',
+        name: 'userName',
+        id: 'userName',
+        title: 'User Name',
+        pattern: {
+          value: regex.maxSize150,
+          message: 'Please enter  valid name',
+        },
+        validationProps: {
+          required: 'This is a mandatory field',
+        },
+      },
+
+      {
+        type: 'text',
+        name: 'mobileNo',
+        id: 'mobileNo',
+        title: 'Mobile No.',
+        isNumber: true,
+        maxChar: 10,
+        pattern: {
+          value: regex.phoneReg,
+          message: 'Please enter valid Mobile No.',
+        },
+        validationProps: {
+          required: 'This is a mandatory field',
+        },
+      },
+      {
+        type: 'text',
+        name: 'emailId',
+        id: 'emailId',
+        title: 'Email Id',
+        pattern: {
+          value: regex.emailReg,
+          message: 'Please enter  valid email',
+        },
+        validationProps: {
+          required: 'This is a mandatory field',
+        },
+      },
+    ],
+  };
+
+  const handleEdit = (value) => {
+        if (value?.close) {
+          setopenDialog(false);
+          return;
+        }
+
+         let postData = value?.data;
+         postData.id = editData?.id;
+         axios
+           .post(Api.baseUri + '/userauth/user-account/update', postData)
+           .then((res) => {
+             if (res?.data?.status == '200') {
+               toast.success('User updated successfully');
+               editData(null);
+                getAllUser();
+               setopenDialog(false);
+             }
+           })
+           .catch((err) => {
+             toast.error(err ?? 'Something went wrong');
+             setopenDialog(false);
+           });
+  }
+
+  function closeConfirmBox(dd, reason) {
+    if (dd == 'YES') {
+      axios
+        .post(
+          Api.baseUri +
+            `/userauth/user-account/deActivate-User-By-id/${deleteData?.id}/${
+              reason?.length ? reason : null
+            }`,
+        )
+        .then((response) => {
+          if (response?.data?.status === 200) {
+            setOpenConfirmBox(false);
+             getAllUser();
+            toast.success('User deactivated successfully.');
+          } else {
+            toast.error(res?.data?.message || 'Something went wrong.');
+          }
+        })
+        .catch((err) => {
+          toast.error('Something went wrong.');
+        });
+    }
+    if (dd == 'NO') {
+      setOpenConfirmBox(false);
+    }
+  }
+
+  function closeConfirmBoxReactivate(dd, reason) {
+    if (dd == 'YES') {
+      axios
+        .post(
+          Api.baseUri +
+            `/userauth/user-account/Activate-User-By-id/${restoreData?.id}/${
+              reason?.length ? reason : null
+            }`,
+        )
+        .then((response) => {
+          if (response?.data?.status === 200) {
+            setRestoreData(null);
+            setOpenConfirmBoxReactivate(false);
+             getAllUser();
+            toast.success('User re-activated successfully.');
+          } else {
+            toast.error(res?.data?.message || 'Something went wrong.');
+          }
+        })
+        .catch((err) => {
+          toast.error('Something went wrong.');
+        });
+    }
+    if (dd == 'NO') {
+      setOpenConfirmBoxReactivate(false);
+    }
+  }
+
+
+
 
   return (
     <div>
@@ -167,6 +352,7 @@ const VendorUser = () => {
         }}
         title='Nodal Point List'
         columns={tableTemplate.columns}
+        data={userData || []}
         options={{
           search: false,
           showTitle: false,
@@ -199,7 +385,7 @@ const VendorUser = () => {
                 return;
               }
               setopenDialog(true);
-              setData(rowData);
+              setEditData(rowData);
             },
           }),
 
@@ -217,7 +403,7 @@ const VendorUser = () => {
             onClick: (event, rowData) => {
               if (rd_.userStatus == 'ACTIVE') {
                 setOpenConfirmBox(true);
-                setData(rowData);
+                setDeleteData(rowData);
               }
             },
           }),
@@ -242,7 +428,7 @@ const VendorUser = () => {
             onClick: (event, rowData) => {
               if (rd_.userStatus == 'INACTIVE') {
                 setOpenConfirmBoxReactivate(true);
-                setData(rowData);
+                setRestoreData(rowData);
               }
             },
           }),
@@ -303,6 +489,35 @@ const VendorUser = () => {
           </DialogContent>
         </div>
       </Dialog>
+
+      {editData && editData.id && (
+        <PopEdit
+          title={editData?.userName}
+          poptemplate={EditTemplate}
+          defaultValues={editData}
+          openDialog={openDialog}
+          setopenDialog={setopenDialog}
+          showbtn={showbtn}
+          buttons={['Update']}
+          popAction={handleEdit}
+        />
+      )}
+
+      <Confirm
+        open={openConfirmbox}
+        header={'Confirm to Deactivate'}
+        cnfMsg={'Are you sure, You want to deactivate the User?'}
+        handleClose={closeConfirmBox}
+        reason={true}
+      />
+
+      <Confirm
+        open={openConfirmboxReactivate}
+        header={'Confirm to Reactivate'}
+        cnfMsg={'Are you sure, You want to reactivate the User?'}
+        handleClose={closeConfirmBoxReactivate}
+        reason={true}
+      />
     </div>
   );
 };
